@@ -1,6 +1,9 @@
 import { categories, foodItems } from "../../data.js";
+import cart from "../../../cart.js";
+// import { update } from "../cart/index.js";
+import { controller, eventEmitter } from "../../../pubsub.js";
 
-const foodItemsDiv = document.createElement("div");
+export const foodItemsDiv = document.createElement("div");
 foodItemsDiv.className = "food-items";
 
 const categoryKeyArray = Object.keys(categories);
@@ -28,6 +31,44 @@ function renderItems(arr) {
   }
 }
 
+// export const updateItem = () => {
+//   const keys = Object.keys(cart);
+//   // console.log(keys);
+//   keys.map((key) => {
+//     const counterElement = document.getElementById(`counter${key}`);
+//     counterElement.textContent = cart[key];
+//     return;
+//   });
+// };
+
+// const updateCounter = (count, id) => {
+//   const counterElement = document.getElementById(`counter${id}`);
+//   if (counterElement.textContent == 0 && count == -1) return;
+//   counterElement.textContent = +counterElement.textContent + count;
+// };
+
+// const addToCart = (e) => {
+//   let item = e.target.id;
+//   if (!cart[item]) cart[item] = 1;
+//   else cart[item]++;
+//   // updateCounter(1, item);
+//   console.log(cart);
+//   update();
+// };
+
+// const removeFromCart = (e) => {
+//   const item = e.target.id;
+//   if (!cart[item]) return;
+//   cart[item] -= 1;
+//   updateCounter(-1, item);
+//   console.log(cart);
+//   update();
+// };
+
+const addToCart = (e) => {};
+
+const removeFromCart = (e) => {};
+
 function addFoodItem(obj) {
   let leftPara1 = document.createElement("p");
   leftPara1.textContent = obj.veg ? "Veg" : "Non-Veg";
@@ -46,10 +87,32 @@ function addFoodItem(obj) {
 
   let rightImg = document.createElement("img");
   rightImg.setAttribute("src", `${obj.image}`);
+  /******************************************************************* */
 
-  let rightBtn = document.createElement("button");
-  rightBtn.textContent = "ADD";
+  // let rightBtn = document.createElement("button");
+  // rightBtn.setAttribute("id", `${obj.id}`);
+  // rightBtn.textContent = "ADD";
+  // rightBtn.addEventListener("click", (obj) => addToCart(obj));
 
+  let buttonDiv = document.createElement("div");
+  let plusButton = document.createElement("button");
+  plusButton.setAttribute("id", `${obj.id}`);
+  plusButton.textContent = "add";
+  let counter = document.createElement("span");
+  counter.setAttribute("class", "counter");
+  counter.setAttribute("id", `counter${obj.id}`);
+  counter.textContent = 0;
+  let minuButton = document.createElement("button");
+  minuButton.setAttribute("id", `${obj.id}`);
+  minuButton.textContent = "remove";
+  buttonDiv.appendChild(plusButton);
+  buttonDiv.appendChild(counter);
+  buttonDiv.appendChild(minuButton);
+
+  plusButton.addEventListener("click", addToCart);
+  minuButton.addEventListener("click", removeFromCart);
+
+  /******************************************************* */
   let rightPara = document.createElement("p");
   rightPara.textContent = "Customisable";
 
@@ -68,7 +131,8 @@ function addFoodItem(obj) {
   leftContainer.appendChild(leftPara2);
 
   rightContainer.appendChild(rightImg);
-  rightContainer.appendChild(rightBtn);
+  // rightContainer.appendChild(rightBtn);
+  rightContainer.appendChild(buttonDiv);
   rightContainer.appendChild(rightPara);
 
   mainContainer.appendChild(leftContainer);
@@ -85,4 +149,3 @@ categoryKeyArray.map((key) => {
   renderItems(foodList);
   return;
 });
-export default foodItemsDiv;
