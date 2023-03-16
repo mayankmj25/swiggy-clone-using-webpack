@@ -178,3 +178,10 @@ export const foodItems = [
   fi12,
   jfj,
 ];
+
+export const mapIdToIndex = {};
+let i = 0;
+foodItems.map((item) => {
+  mapIdToIndex[item.id]=i;
+  i++;
+})

@@ -112,6 +112,22 @@ function addFoodItem(obj) {
   plusButton.addEventListener("click", addToCart);
   minuButton.addEventListener("click", removeFromCart);
 
+  function addToCart(e){
+    // console.log(e.target.id)
+    controller.addCountToData(e.target.id);
+  }
+  eventEmitter.on("update", updateCount);
+  
+  function updateCount(data){
+    let [id,count]=data;
+    document.getElementById(`counter${id}`).textContent=count;
+    // counter.textContent= e[1];
+  }
+
+  function removeFromCart(e){
+    controller.reduceCountToData(e.target.id);
+  }
+
   /******************************************************* */
   let rightPara = document.createElement("p");
   rightPara.textContent = "Customisable";
