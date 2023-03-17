@@ -1,139 +1,63 @@
-// import { container } from "webpack";
-import cartData from "../../../cart.js";
-// import { updateItem } from "../foodItems/index.js";
-import cart from "../../../cart.js";
-// import { controller, eventEmitter } from "../../../pubsub.js";
+import { controller, eventEmitter } from "../../../pubsub.js";
 import { foodItems, categories } from "../../data.js";
-
-// const foodInfoName = {};
-// foodItems.map((item) => {
-//   foodInfoName[item.id] = item.name;
-// });
-
-// const foodInfoPrice = {};
-// foodItems.map((item) => {
-//   foodInfoPrice[item.id] = item.price;
-// });
+import { mapIdToIndex } from "../../data.js";
 
 export const emptyCartDiv = document.createElement("div");
-// emptyCartDiv.className = "cart";
-// const emptyCart = document.createElement("div");
-// emptyCart.setAttribute("id", "cart");
+emptyCartDiv.setAttribute("id", "cart");
 
-// const emptyCartHeading = document.createElement("h1");
-// emptyCartHeading.setAttribute("id", "empty-cart-title");
-// emptyCartHeading.innerText = "Cart Empty";
-// emptyCart.appendChild(emptyCartHeading);
+eventEmitter.on("update", updateCartSection);
 
-// const emptyCartImage = document.createElement("img");
-// emptyCartImage.setAttribute("id", "empty-cart-img");
-// emptyCartImage.setAttribute(
-//   "src",
-//   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_480/Cart_empty_-_menu_2x_ejjkf2"
-// );
-// emptyCart.appendChild(emptyCartImage);
+const incBtnHandler = (e) => {
+    const id = e.target.id;
+    controller.addCountToData(id);
+}
+const decBtnHandler = (e) => {
+    const id = e.target.id;
+    controller.reduceCountToData(id);
+}
 
-// const emptyCartPara = document.createElement("p");
-// emptyCartPara.setAttribute("id", "empty-cart-p");
-// emptyCartPara.innerText =
-//   "Good food is always cooking! Go ahead, order some yummy items from the menu.";
-// emptyCart.appendChild(emptyCartPara);
+function updateCartSection(data) {
+    let [id, individualCount] = data;
+    if(individualCount === 0){
+        document.getElementById(`list-${id}`).remove();
+        console.log("fbno")
+    }
+    
+    else if(!document.getElementById(`list-${id}`)){
+        const container=document.createElement("div");
+        container.setAttribute("id",`list-${id}`)
+        emptyCartDiv.appendChild(container);
 
-// emptyCartDiv.appendChild(emptyCart);
+        const foodItemName = document.createElement("div");
+        foodItemName.textContent=foodItems[mapIdToIndex[id]].name;
 
-// const mainCartDiv = document.createElement("div");
-// const emptyText = document.createElement("div");
-// emptyText.textContent = "empty";
-// mainCartDiv.appendChild(emptyCartDiv);
-// mainCartDiv.textContent = "Empty";
-// mainCartDiv.style.position = "sticky";
-// emptyCartDiv.appendChild(mainCartDiv);
+        const incBtn = document.createElement("button");
+        incBtn.textContent="Add"
+        incBtn.setAttribute("id", id);
+        incBtn.addEventListener("click",incBtnHandler);
 
-// const updateTotal = () => {
-//   const priceList = Array.from(
-//     document.getElementsByClassName("listContainer")
-//   );
-//   let total = 0;
-//   priceList.map((item) => {
-//     const price = item.getElementsByClassName("price")[0].textContent;
-//     const quantity = item.getElementsByClassName("count")[0].textContent;
-//     total += price * quantity;
-//   });
-//   document.getElementById("totalPrice").textContent = `Total: ${total}`;
-// };
+        const quantity= document.createElement("span");
+        quantity.setAttribute("id",`quantity-${id}`);
+        quantity.textContent=individualCount;
 
-// const updateCounter = (id, count) => {
-//   const counterElement = document.getElementById(`counter2${id}`);
-//   if (counterElement.textContent == 0 && count == -1) return;
-//   counterElement.textContent = +counterElement.textContent + count;
-// };
+        const decBtn = document.createElement("button");
+        decBtn.textContent="Remove"
+        decBtn.setAttribute("id", id);
+        decBtn.addEventListener("click",decBtnHandler);
 
-// const addItem = (e) => {
-//   const id = e.target.id;
-//   updateCounter(id, 1);
-//   if (!cart[id]) cart[id] = 1;
-//   else cart[id]++;
-//   console.log(cart);
-//   updateItem();
-//   updateTotal();
-// };
+        const foodItemPrice = document.createElement("div");
+        foodItemPrice.textContent=foodItems[mapIdToIndex[id]].price;
 
-// const removeItem = (e) => {
-//   const id = e.target.id;
-//   updateCounter(id, -1);
-//   if (!cart[id]) return;
-//   cart[id] -= 1;
-//   if (cart[id] == 0) {
-//     const element = document.getElementById(`list${id}`);
-//     element.remove();
-//   }
-//   console.log(cart);
-//   updateItem();
-//   updateTotal();
-// };
 
-// export const update = () => {
-//   if (mainCartDiv.childCount != 0)
-//     mainCartDiv.removeChild(mainCartDiv.firstChild);
-//   // console.log(mainCartDiv.firstChild);
-//   const mainCart = document.createElement("div");
-//   const keys = Object.keys(cartData);
-//   let total = 0;
-//   keys.map((key) => {
-//     if (cartData[key] !== 0) {
-//       const listContainer = document.createElement("div");
-//       listContainer.className = "listContainer";
-//       listContainer.setAttribute("id", `list${key}`);
-//       const name = document.createElement("span");
-//       const price = document.createElement("span");
-//       price.setAttribute("class", "price");
-//       const addButton = document.createElement("button");
-//       addButton.setAttribute("id", key);
-//       addButton.addEventListener("click", addItem);
-//       addButton.textContent = "add";
-//       const removeButton = document.createElement("button");
-//       removeButton.textContent = "remove";
-//       removeButton.addEventListener("click", removeItem);
-//       removeButton.setAttribute("id", key);
-//       const count = document.createElement("span");
-//       count.className = "count";
-//       count.setAttribute("id", `counter2${key}`);
-//       name.textContent = `${foodInfoName[key]}`;
-//       price.textContent = `${foodInfoPrice[key]}`;
-//       count.textContent = `${cartData[key]}`;
-//       listContainer.appendChild(name);
-//       listContainer.appendChild(addButton);
-//       listContainer.appendChild(count);
-//       listContainer.appendChild(removeButton);
-//       listContainer.appendChild(price);
-//       mainCart.appendChild(listContainer);
-//       total += foodInfoPrice[key] * cartData[key];
-//     }
-//     return;
-//   });
-//   const totalPrice = document.createElement("p");
-//   totalPrice.setAttribute("id", "totalPrice");
-//   totalPrice.textContent = `Total: ${total}`;
-//   mainCart.appendChild(totalPrice);
-//   mainCartDiv.appendChild(mainCart);
-// };
+        container.appendChild(foodItemName);
+        container.appendChild(incBtn);
+        container.appendChild(quantity);
+        container.appendChild(decBtn);
+        container.appendChild(foodItemPrice);
+    }
+    else {
+        document.getElementById(`quantity-${id}`).textContent=individualCount;
+    }
+}
+
+
