@@ -1,7 +1,7 @@
 import { categories, foodItems } from "../../data.js";
 import cart from "../../../cart.js";
 // import { update } from "../cart/index.js";
-import { controller, eventEmitter } from "../../../pubsub.js";
+import { controller, eventEmitter } from "../../pubsub.js";
 
 export const foodItemsDiv = document.createElement("div");
 foodItemsDiv.className = "food-items";
@@ -112,19 +112,19 @@ function addFoodItem(obj) {
   plusButton.addEventListener("click", addToCart);
   minuButton.addEventListener("click", removeFromCart);
 
-  function addToCart(e){
+  function addToCart(e) {
     // console.log(e.target.id)
     controller.addCountToData(e.target.id);
   }
   eventEmitter.on("update", updateCount);
-  
-  function updateCount(data){
-    let [id,count]=data;
-    document.getElementById(`counter${id}`).textContent=count;
+
+  function updateCount(data) {
+    let [id, count] = data;
+    document.getElementById(`counter${id}`).textContent = count;
     // counter.textContent= e[1];
   }
 
-  function removeFromCart(e){
+  function removeFromCart(e) {
     controller.reduceCountToData(e.target.id);
   }
 

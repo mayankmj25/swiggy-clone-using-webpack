@@ -1,4 +1,4 @@
-import { foodItems, mapIdToIndex } from "./js/data.js";
+import { foodItems, mapIdToIndex } from "./data.js";
 
 export class EventEmitter {
   eventListenerByName = {};

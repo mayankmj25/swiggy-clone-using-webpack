@@ -11,6 +11,13 @@ class FoodItem {
     this.description = description;
     this.count = count;
   }
+  setName(name) {
+    this.name = name;
+    return this;
+  }
+  getName() {
+    return this.name;
+  }
 }
 
 export const categories = {
@@ -182,6 +189,6 @@ export const foodItems = [
 export const mapIdToIndex = {};
 let i = 0;
 foodItems.map((item) => {
-  mapIdToIndex[item.id]=i;
+  mapIdToIndex[item.id] = i;
   i++;
-})
+});

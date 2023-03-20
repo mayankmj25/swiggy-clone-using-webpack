@@ -1,7 +1,8 @@
 import { categories } from "../../data.js";
-import { createElement } from "../../../helper.js";
 
-const categoryListDiv = createElement("div", "category");
+const categoryListDiv = document.createElement("div");
+categoryListDiv.setAttribute("class", "category");
+
 const categoryList = document.createElement("ul");
 categoryList.className = "category-list";
 
