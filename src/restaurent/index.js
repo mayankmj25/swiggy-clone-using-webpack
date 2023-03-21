@@ -1,9 +1,10 @@
-import upperBoxDiv from "./upperBox.js";
-import lowerBoxDiv from "./lowerBox.js";
+import {restaurantLowerBox} from "./lowerBox.js"
+import { restaurantUpperBox } from "./upperBox.js";
 
-const restaurentDiv = document.createElement("div");
-restaurentDiv.className = "restaurent";
-restaurentDiv.appendChild(upperBoxDiv);
-restaurentDiv.appendChild(lowerBoxDiv);
-
-export default restaurentDiv;
+export function restaurentDiv(){
+    const restaurentDiv = document.createElement("div");
+    restaurentDiv.className = "restaurent";
+    restaurantUpperBox(restaurentDiv);
+    restaurantLowerBox(restaurentDiv);
+    document.body.appendChild(restaurentDiv);
+}
