@@ -1,5 +1,7 @@
 import { controller, eventEmitter } from "../../pubsub.js";
-import { foodItems, categories } from "../../data.js";
+// import { foodItems, categories } from "../../data.js";
+import FOOD_ITEMS from "../../FOOD_ITEMS.js";
+
 import { mapIdToIndex } from "../../data.js";
 
 export const emptyCartDiv = document.createElement("div");
