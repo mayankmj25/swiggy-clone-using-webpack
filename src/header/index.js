@@ -1,8 +1,13 @@
-import leftHeader from "./leftHeader.js";
-import rightHeader from "./rightHeader.js";
-// import { createElement } from "../../helper.js";
+import { createLeftHeader } from "./leftHeader.js";
+import { createRightHeader } from "./rightHeader.js";
+
+
+export function createMainHeader() {
+
 const mainHeader = document.createElement("div");
 mainHeader.setAttribute("class", "header");
-mainHeader.appendChild(leftHeader);
-mainHeader.appendChild(rightHeader);
-export default mainHeader;
+createLeftHeader(mainHeader);
+createRightHeader(mainHeader);
+
+document.body.appendChild(mainHeader);
+}

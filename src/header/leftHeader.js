@@ -1,3 +1,5 @@
+export function createLeftHeader(parentElement) {
+
 const leftHeader = document.createElement("div");
 leftHeader.setAttribute("class", "leftNav");
 
@@ -17,4 +19,7 @@ area.textContent = "area";
 areaDiv.appendChild(area);
 leftHeader.appendChild(logoImageDiv);
 leftHeader.appendChild(areaDiv);
-export default leftHeader;
+
+parentElement.appendChild(leftHeader);
+
+}
