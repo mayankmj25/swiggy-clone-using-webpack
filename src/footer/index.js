@@ -1,3 +1,5 @@
+export function createFooter() {
+
 const footerDiv = document.createElement("div");
 footerDiv.className = "footer";
 
@@ -47,4 +49,6 @@ footerDiv.appendChild(swiggyDiv);
 footerDiv.appendChild(swiggyHeadingDiv);
 footerDiv.appendChild(socialsDiv);
 
-export default footerDiv;
+document.body.appendChild(footerDiv);
+
+}
