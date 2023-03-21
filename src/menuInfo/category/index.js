@@ -1,21 +1,26 @@
 import { categories } from "../../data.js";
 
-const categoryListDiv = document.createElement("div");
-categoryListDiv.setAttribute("class", "category");
+export function cretaeCategoryList(parentElement) {
 
-const categoryList = document.createElement("ul");
-categoryList.className = "category-list";
+  const categoryListContainer = document.createElement("div");
+  categoryListContainer.setAttribute("class", "category");
 
-const categoryKeyArray = Object.keys(categories);
+  parentElement.appendChild(categoryListContainer);
+  const categoryList = document.createElement("ul");
+  categoryList.className = "category-list";
 
-categoryKeyArray.map((key) => {
-  const listElement = document.createElement("li");
-  const linkElement = document.createElement("a");
-  linkElement.setAttribute("href", `#${categories[key]}`);
-  linkElement.innerText = categories[key];
-  listElement.appendChild(linkElement);
-  categoryListDiv.appendChild(listElement);
-  return;
-});
+  const categoryKeyArray = Object.keys(categories);
 
-export default categoryListDiv;
+  categoryKeyArray.map((key) => {
+    const listElement = document.createElement("li");
+    const linkElement = document.createElement("a");
+    linkElement.setAttribute("href", `#${categories[key]}`);
+    linkElement.innerText = categories[key];
+    listElement.appendChild(linkElement);
+    categoryListContainer.appendChild(listElement);
+    return;
+  });
+
+parentElement.appendChild(categoryListContainer);
+}
+

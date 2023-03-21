@@ -2,7 +2,7 @@ import { createLeftHeader } from "./leftHeader.js";
 import { createRightHeader } from "./rightHeader.js";
 
 
-export function createMainHeader() {
+export function createMainHeader(payload) {
 
 const mainHeader = document.createElement("div");
 mainHeader.setAttribute("class", "header");

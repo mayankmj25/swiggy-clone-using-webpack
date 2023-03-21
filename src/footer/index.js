@@ -1,23 +1,23 @@
-export function createFooter() {
+export function createFooter(payload) {
 
-const footerDiv = document.createElement("div");
-footerDiv.className = "footer";
+const footerContainer = document.createElement("div");
+footerContainer.className = "footer";
 
-const swiggyDiv = document.createElement("div");
-swiggyDiv.setAttribute("id", "swiggy");
+const swiggyContainer = document.createElement("div");
+swiggyContainer.setAttribute("id", "swiggy");
 const swiggyImage = document.createElement("img");
 swiggyImage.setAttribute(
   "src",
   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_284/Logo_f5xzza"
 );
-swiggyDiv.appendChild(swiggyImage);
+swiggyContainer.appendChild(swiggyImage);
 
-const swiggyHeadingDiv = document.createElement("div");
-swiggyHeadingDiv.setAttribute("id", "swiggy-2023");
-swiggyHeadingDiv.innerText = "2023 Swiggy";
+const swiggyHeadingContainer = document.createElement("div");
+swiggyHeadingContainer.setAttribute("id", "swiggy-2023");
+swiggyHeadingContainer.innerText = "2023 Swiggy";
 
-const socialsDiv = document.createElement("div");
-socialsDiv.setAttribute("id", "socials");
+const socialsContainer = document.createElement("div");
+socialsContainer.setAttribute("id", "socials");
 
 const facebookLogo = document.createElement("img");
 facebookLogo.setAttribute(
@@ -40,14 +40,14 @@ twitterLogo.setAttribute(
   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_48,h_48/icon-twitter_gtq8dv"
 );
 
-socialsDiv.appendChild(facebookLogo);
-socialsDiv.appendChild(pinterestLogo);
-socialsDiv.appendChild(instagramLogo);
-socialsDiv.appendChild(twitterLogo);
+socialsContainer.appendChild(facebookLogo);
+socialsContainer.appendChild(pinterestLogo);
+socialsContainer.appendChild(instagramLogo);
+socialsContainer.appendChild(twitterLogo);
 
-footerDiv.appendChild(swiggyDiv);
-footerDiv.appendChild(swiggyHeadingDiv);
-footerDiv.appendChild(socialsDiv);
+footerContainer.appendChild(swiggyContainer);
+footerContainer.appendChild(swiggyHeadingContainer);
+footerContainer.appendChild(socialsContainer);
 
 document.body.appendChild(footerDiv);
 

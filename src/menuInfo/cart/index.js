@@ -4,11 +4,6 @@ import FOOD_ITEMS from "../../FOOD_ITEMS.js";
 
 import { mapIdToIndex } from "../../data.js";
 
-export const emptyCartDiv = document.createElement("div");
-emptyCartDiv.setAttribute("id", "cart");
-
-eventEmitter.on("update", updateCartSection);
-
 const incBtnHandler = (e) => {
   const id = e.target.id;
   controller.addCountToData(id);
@@ -26,7 +21,7 @@ function updateCartSection(data) {
   } else if (!document.getElementById(`list-${id}`)) {
     const container = document.createElement("div");
     container.setAttribute("id", `list-${id}`);
-    emptyCartDiv.appendChild(container);
+    emptyCartContainer.appendChild(container);
 
     const foodItemName = document.createElement("div");
     foodItemName.textContent = foodItems[mapIdToIndex[id]].name;
@@ -57,3 +52,15 @@ function updateCartSection(data) {
     document.getElementById(`quantity-${id}`).textContent = individualCount;
   }
 }
+
+export function createMenuCartSection(parentElement) {
+
+const emptyCartContainer = document.createElement("div");
+emptyCartContainer.setAttribute("id", "cart");
+document.appendChild(emptyCartContainer);
+
+eventEmitter.on("update", updateCartSection);
+
+}
+
+
