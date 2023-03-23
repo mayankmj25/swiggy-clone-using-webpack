@@ -1,13 +1,12 @@
 import { createMainHeader } from "./header/index.js";
-import {breadCrumb} from "./breadCrumbList/index.js";
-import {restaurentDiv} from "./restaurent/index.js";
-// import { createMenuSection } from "./menuInfo/index.js";
+import { breadCrumb } from "./breadCrumbList/index.js";
+import { restaurentContainer } from "./restaurent/index.js";
+import { menuInfo } from "./menuInfo/index.js";
 import { createFooter } from "./footer/index.js";
+// import footerDiv from "./footer/index.js";
 
-// document.body.appendChild(breadCrumb);
-// document.body.appendChild(restaurentDiv);
-document.body.append(createMainHeader());
-breadCrumb();
-restaurentDiv();
-document.body.append(createFooter());
-// document.body.append(createMenuSection());
+document.body.appendChild(createMainHeader());
+document.body.appendChild(breadCrumb());
+document.body.appendChild(restaurentContainer());
+document.body.appendChild(menuInfo());
+document.body.appendChild(createFooter());
