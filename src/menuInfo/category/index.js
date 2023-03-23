@@ -21,6 +21,6 @@ export function cretaeCategoryList(parentElement) {
     return;
   });
 
-parentElement.appendChild(categoryListContainer);
+return categoryListContainer;
 }
 

@@ -57,10 +57,9 @@ export function createMenuCartSection(parentElement) {
 
 const emptyCartContainer = document.createElement("div");
 emptyCartContainer.setAttribute("id", "cart");
-document.appendChild(emptyCartContainer);
-
 eventEmitter.on("update", updateCartSection);
 
+return emptyCartContainer;
 }
 
 

@@ -20,6 +20,6 @@ areaContainer.appendChild(area);
 leftHeader.appendChild(logoImageContainer);
 leftHeader.appendChild(areaContainer);
 
-parentElement.appendChild(leftHeader);
+return leftHeader;
 
 }

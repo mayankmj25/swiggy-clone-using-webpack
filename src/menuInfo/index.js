@@ -7,10 +7,11 @@ export function createMenuSection() {
     
 const menuInfoContainer = document.createElement("div");
 menuInfoContainer.className = "menu-info";
-document.body.appendChild(menuInfoContainer);
 
-createMenuCartSection(menuInfoContainer);
-cretaeCategoryList(menuInfoContainer);
-createFoodCardItem(menuInfoContainer);
+menuInfoContainer.appendChild(createMenuCartSection(menuInfoContainer));
+menuInfoContainer.appendChild(cretaeCategoryList(menuInfoContainer));
+menuInfoContainer.appendChild(createFoodCardItem(menuInfoContainer));
+
+return menuInfoContainer;
 }
 

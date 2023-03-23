@@ -118,8 +118,7 @@ function addFoodItem(obj) {
 
   foodItemsContainer.appendChild(mainContainer);
  }
-parentElement.appendChild(foodItemsContainer);
-
+ return foodItemsContainer;
 }
 
 categoryKeyArray.map((key) => {

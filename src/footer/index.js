@@ -49,6 +49,6 @@ footerContainer.appendChild(swiggyContainer);
 footerContainer.appendChild(swiggyHeadingContainer);
 footerContainer.appendChild(socialsContainer);
 
-document.body.appendChild(footerDiv);
+return footerContainer;
 
 }

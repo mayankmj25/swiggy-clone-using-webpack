@@ -4,8 +4,8 @@ import { createMainHeader } from "./header/index.js";
 // import { createMenuSection } from "./menuInfo/index.js";
 import { createFooter } from "./footer/index.js";
 
-document.body.appendChild(breadCrumb);
-document.body.appendChild(restaurentDiv);
-createMainHeader();
-createFooter();
-createMenuSection();
+// document.body.appendChild(breadCrumb);
+// document.body.appendChild(restaurentDiv);
+document.body.append(createMainHeader());
+document.body.append(createFooter());
+// document.body.append(createMenuSection());

@@ -6,8 +6,8 @@ export function createMainHeader(payload) {
 
 const mainHeader = document.createElement("div");
 mainHeader.setAttribute("class", "header");
-createLeftHeader(mainHeader);
-createRightHeader(mainHeader);
+document.body.append(createLeftHeader(mainHeader));
+document.body.append(createRightHeader(mainHeader));
 
-document.body.appendChild(mainHeader);
+return mainHeader;
 }
