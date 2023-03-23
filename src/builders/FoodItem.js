@@ -35,6 +35,12 @@ class FoodItem {
   getCount = () => {
     return this.itemCartCount;
   };
+  getInfo = () => {
+    return this.itemInfo;
+  };
+  getImageUrl = () => {
+    return this.itemImage;
+  };
   getCategoryName = () => {
     return this.itemCategoryName;
   };
