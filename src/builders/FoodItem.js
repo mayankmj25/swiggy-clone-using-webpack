@@ -1,5 +1,15 @@
 class FoodItem {
-  constructor() {
+  constructor({
+    itemId,
+    itemName,
+    itemPrice,
+    itemImage,
+    itemInfo,
+    isVeg,
+    itemCartCount,
+    itemCategoryId,
+    itemCategoryName,
+  }) {
     this.itemId = itemId;
     this.itemName = itemName;
     this.itemPrice = itemPrice;

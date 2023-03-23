@@ -1,4 +1,4 @@
-import FoodItem from "../builders/FoodItem";
+import FoodItem from "../builders/FoodItem.js";
 
 const FOOD_ITEMS = [
   new FoodItem({

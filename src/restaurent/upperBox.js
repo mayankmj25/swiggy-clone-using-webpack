@@ -1,9 +1,9 @@
-export function restaurantUpperBox(parentElement){
+export function restaurantUpperBox() {
   const restaurantUpperBox = document.createElement("div");
   restaurantUpperBox.className = "upper-box";
-  
+
   // Adding An Image
-  
+
   const restaurentImageContainer = document.createElement("div");
   const restaurentImage = document.createElement("img");
   restaurentImage.setAttribute("width", "254");
@@ -14,7 +14,7 @@ export function restaurantUpperBox(parentElement){
   );
   restaurentImageContainer.appendChild(restaurentImage);
   restaurantUpperBox.appendChild(restaurentImageContainer);
-  
+
   // adding restaurent Info
   const restaurentInfoContainer = document.createElement("div");
   restaurentInfoContainer.className = "rest-info";
@@ -23,11 +23,12 @@ export function restaurantUpperBox(parentElement){
   const restaurentInfoText = document.createElement("p");
   restaurentInfoText.innerText = "Biryani, Andhra";
   const restaurentInfoPara2 = document.createElement("p");
-  restaurentInfoPara2.innerText = "Outer Ring Road, Marathahalli | Change Outlet";
-  
+  restaurentInfoPara2.innerText =
+    "Outer Ring Road, Marathahalli | Change Outlet";
+
   const ratingDiv = document.createElement("div");
   ratingDiv.className = "rating";
-  
+
   const ratingContainerChild1 = document.createElement("div");
   const ratingDivChild1Span = document.createElement("span");
   ratingDivChild1Span.innerText = "4.2";
@@ -36,7 +37,7 @@ export function restaurantUpperBox(parentElement){
   ratingContainerChild1.appendChild(ratingDivChild1Span);
   ratingContainerChild1.appendChild(ratingChild1Text);
   ratingDiv.appendChild(ratingContainerChild1);
-  
+
   const ratingContainerChild2 = document.createElement("div");
   const ratingChild2Span = document.createElement("span");
   ratingChild2Span.innerText = "41 Mins";
@@ -45,7 +46,7 @@ export function restaurantUpperBox(parentElement){
   ratingContainerChild2.appendChild(ratingChild2Span);
   ratingContainerChild2.appendChild(ratingChild2Text);
   ratingDiv.appendChild(ratingContainerChild2);
-  
+
   const ratingContainerChild3 = document.createElement("div");
   const ratingChild3Span = document.createElement("span");
   ratingChild3Span.innerText = "Rs 500";
@@ -54,7 +55,7 @@ export function restaurantUpperBox(parentElement){
   ratingContainerChild3.appendChild(ratingChild3Span);
   ratingContainerChild3.appendChild(ratingChild3Text);
   ratingDiv.appendChild(ratingContainerChild3);
-  
+
   // Adding offer div
   const offerContainer = document.createElement("div");
   offerContainer.className = "offer";
@@ -75,14 +76,14 @@ export function restaurantUpperBox(parentElement){
   offerChild2.appendChild(offerChild2Span);
   offerContainer.appendChild(offerChild1);
   offerContainer.appendChild(offerChild2);
-  
+
   restaurentInfoContainer.appendChild(restaurentInfoHeader);
   restaurentInfoContainer.appendChild(restaurentInfoText);
   restaurentInfoContainer.appendChild(restaurentInfoPara2);
   restaurentInfoContainer.appendChild(ratingDiv);
-  
+
   restaurantUpperBox.appendChild(restaurentInfoContainer);
   restaurantUpperBox.appendChild(offerContainer);
-  
-  parentElement.appendChild(restaurantUpperBox);
+
+  return restaurantUpperBox;
 }
