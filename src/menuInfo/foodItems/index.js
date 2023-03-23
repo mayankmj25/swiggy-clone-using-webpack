@@ -1,10 +1,10 @@
 import { categories, foodItems } from "../../data.js";
 import cart from "../../../cart.js";
-// import { update } from "../cart/index.js";
 import { controller, eventEmitter } from "../../pubsub.js";
 
-export const foodItemsDiv = document.createElement("div");
-foodItemsDiv.className = "food-items";
+export function createFoodCardItem(parentElement) {
+const foodItemsContainer = document.createElement("div");
+foodItemsContainer.className = "food-items";
 
 const categoryKeyArray = Object.keys(categories);
 
@@ -21,7 +21,7 @@ const addSection = function (key, foodList) {
   section.appendChild(sectionHeader);
   section.appendChild(sectionPara);
 
-  foodItemsDiv.appendChild(section);
+  foodItemsContainer.appendChild(section);
 };
 
 function renderItems(arr) {
@@ -30,44 +30,6 @@ function renderItems(arr) {
     addFoodItem(arr[i]);
   }
 }
-
-// export const updateItem = () => {
-//   const keys = Object.keys(cart);
-//   // console.log(keys);
-//   keys.map((key) => {
-//     const counterElement = document.getElementById(`counter${key}`);
-//     counterElement.textContent = cart[key];
-//     return;
-//   });
-// };
-
-// const updateCounter = (count, id) => {
-//   const counterElement = document.getElementById(`counter${id}`);
-//   if (counterElement.textContent == 0 && count == -1) return;
-//   counterElement.textContent = +counterElement.textContent + count;
-// };
-
-// const addToCart = (e) => {
-//   let item = e.target.id;
-//   if (!cart[item]) cart[item] = 1;
-//   else cart[item]++;
-//   // updateCounter(1, item);
-//   console.log(cart);
-//   update();
-// };
-
-// const removeFromCart = (e) => {
-//   const item = e.target.id;
-//   if (!cart[item]) return;
-//   cart[item] -= 1;
-//   updateCounter(-1, item);
-//   console.log(cart);
-//   update();
-// };
-
-const addToCart = (e) => {};
-
-const removeFromCart = (e) => {};
 
 function addFoodItem(obj) {
   let leftPara1 = document.createElement("p");
@@ -94,7 +56,7 @@ function addFoodItem(obj) {
   // rightBtn.textContent = "ADD";
   // rightBtn.addEventListener("click", (obj) => addToCart(obj));
 
-  let buttonDiv = document.createElement("div");
+  let buttonContainer = document.createElement("div");
   let plusButton = document.createElement("button");
   plusButton.setAttribute("id", `${obj.id}`);
   plusButton.textContent = "add";
@@ -105,9 +67,9 @@ function addFoodItem(obj) {
   let minuButton = document.createElement("button");
   minuButton.setAttribute("id", `${obj.id}`);
   minuButton.textContent = "remove";
-  buttonDiv.appendChild(plusButton);
-  buttonDiv.appendChild(counter);
-  buttonDiv.appendChild(minuButton);
+  buttonContainer.appendChild(plusButton);
+  buttonContainer.appendChild(counter);
+  buttonContainer.appendChild(minuButton);
 
   plusButton.addEventListener("click", addToCart);
   minuButton.addEventListener("click", removeFromCart);
@@ -148,13 +110,15 @@ function addFoodItem(obj) {
 
   rightContainer.appendChild(rightImg);
   // rightContainer.appendChild(rightBtn);
-  rightContainer.appendChild(buttonDiv);
+  rightContainer.appendChild(buttonContainer);
   rightContainer.appendChild(rightPara);
 
   mainContainer.appendChild(leftContainer);
   mainContainer.appendChild(rightContainer);
 
-  foodItemsDiv.appendChild(mainContainer);
+  foodItemsContainer.appendChild(mainContainer);
+ }
+ return foodItemsContainer;
 }
 
 categoryKeyArray.map((key) => {
