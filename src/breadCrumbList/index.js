@@ -1,4 +1,4 @@
-export function breadCrumb() {
+export function createBreadCrumb() {
   const breadCrumb = document.createElement("div");
   breadCrumb.setAttribute("class", "pageLocation");
   const spanElement = document.createElement("span");
