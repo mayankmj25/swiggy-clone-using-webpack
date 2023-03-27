@@ -1,7 +1,5 @@
-import FoodItem from "../builders/FoodItem.js";
-
 const FOOD_ITEMS = [
-  new FoodItem({
+  {
     itemId: "PANEER65",
     itemName: "Paneer65",
     itemPrice: "275",
@@ -13,36 +11,21 @@ const FOOD_ITEMS = [
     itemCartCount: 0,
     itemCategoryId: "VEG_STARTER",
     itemCategoryName: "Veg Starter",
-  }),
-  new FoodItem(
-    {
-      itemId: "PANEER65",
-      itemName: "Paneer65",
-      itemPrice: "275",
-      itemImage:
-        "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/druwjzmfmz7qvepq3bkr",
-      itemInfo:
-        "E: 723. 82 kcal (241. 27 kcal), c: 30. 89 grams (10. 30 grams), p: 32. 95 grams (10. 98 grams), f: 51. 82 grams (17. 27 grams) [Serving info: 1 Serve, Serving size: 300 grams, Energy: 723.82 kcal, Protein: 32.95g, Carbohydrates: 30.89g, Fat: 51.82g]",
-      isVeg: true,
-      itemCartCount: 0,
-      itemCategoryId: "VEG_STARTER",
-      itemCategoryName: "Veg Starter",
-    },
-    {
-      itemId: "CHILLY_PANEER",
-      itemName: "Chilly Paneer",
-      itemPrice: "275",
-      itemImage:
-        "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/byonwwb8mzxyqluxlqpq",
-      itemInfo:
-        "E: 871. 69 kcal (272. 40 kcal), c: 21. 54 grams (6. 73 grams), p: 51. 90 grams (16. 22 grams), f: 64. 36 grams (20. 11 grams) [Serving info: 1 Serve, Serving size: 320 grams, Energy: 871.69 kcal, Protein: 51.9g, Carbohydrates: 21.54g, Fat: 64.36g]",
-      isVeg: true,
-      itemCartCount: 0,
-      itemCategoryId: "VEG_STARTER",
-      itemCategoryName: "Veg Starter",
-    }
-  ),
-  new FoodItem({
+  },
+  {
+    itemId: "CHILLY_PANEER",
+    itemName: "Chilly Paneer",
+    itemPrice: "275",
+    itemImage:
+      "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/byonwwb8mzxyqluxlqpq",
+    itemInfo:
+      "E: 871. 69 kcal (272. 40 kcal), c: 21. 54 grams (6. 73 grams), p: 51. 90 grams (16. 22 grams), f: 64. 36 grams (20. 11 grams) [Serving info: 1 Serve, Serving size: 320 grams, Energy: 871.69 kcal, Protein: 51.9g, Carbohydrates: 21.54g, Fat: 64.36g]",
+    isVeg: true,
+    itemCartCount: 0,
+    itemCategoryId: "VEG_STARTER",
+    itemCategoryName: "Veg Starter",
+  },
+  {
     itemId: "VEG_MANCHURIAN",
     itemName: "Veg Manchurian",
     itemPrice: 275,
@@ -54,8 +37,8 @@ const FOOD_ITEMS = [
     itemCartCount: 0,
     itemCategoryId: "VEG_STARTER",
     itemCategoryName: "Veg Starter",
-  }),
-  new FoodItem({
+  },
+  {
     itemId: "CHILLY_CHICKEN_BONELESS",
     itemName: "Chilly Chicken (Boneless)",
     itemPrice: 285,
@@ -67,8 +50,8 @@ const FOOD_ITEMS = [
     itemCartCount: 0,
     itemCategoryId: "NON_VEG_STARTER",
     itemCategoryName: "Non-veg Starter",
-  }),
-  new FoodItem({
+  },
+  {
     itemId: "MEGHANA_CHICKEN_555",
     itemName: "Meghana Chicken 555",
     itemPrice: 295,
@@ -80,8 +63,8 @@ const FOOD_ITEMS = [
     itemCartCount: 0,
     itemCategoryId: "NON_VEG_STARTER",
     itemCategoryName: "Non-veg Starter",
-  }),
-  new FoodItem({
+  },
+  {
     itemId: "CHICKEN_LOLLYPOP",
     itemName: "Chicken Lollypop",
     itemPrice: 290,
@@ -93,8 +76,8 @@ const FOOD_ITEMS = [
     itemCartCount: 0,
     itemCategoryId: "NON_VEG_STARTER",
     itemCategoryName: "Non-veg Starter",
-  }),
-  new FoodItem({
+  },
+  {
     itemId: "CHICKEN_BIRYANI",
     itemName: "Chicken Biryani",
     itemPrice: 280,
@@ -106,8 +89,8 @@ const FOOD_ITEMS = [
     itemCartCount: 0,
     itemCategoryId: "NON_VEG_STARTER",
     itemCategoryName: "Non-veg Starter",
-  }),
-  new FoodItem({
+  },
+  {
     itemId: "VEG_KADAI",
     itemName: "Veg Kadai",
     itemPrice: 225,
@@ -119,8 +102,8 @@ const FOOD_ITEMS = [
     itemCartCount: 0,
     itemCategoryId: "VEG_CURRIES",
     itemCategoryName: "Veg Curries",
-  }),
-  new FoodItem({
+  },
+  {
     itemId: "PALAK_PANEER_CURRY",
     itemName: "Palak Paneer Curry",
     itemPrice: 275,
@@ -132,8 +115,8 @@ const FOOD_ITEMS = [
     itemCartCount: 0,
     itemCategoryId: "VEG_CURRIES",
     itemCategoryName: "Veg Curries",
-  }),
-  new FoodItem({
+  },
+  {
     itemId: "GREEN_PEAS_CURRY",
     itemName: "Green Peas Curry",
     itemPrice: 225,
@@ -145,8 +128,8 @@ const FOOD_ITEMS = [
     itemCartCount: 0,
     itemCategoryId: "VEG_CURRIES",
     itemCategoryName: "Veg Curries",
-  }),
-  new FoodItem({
+  },
+  {
     itemId: "PANEER_BUTTER_MASALA",
     itemName: "Paneer Butter Masala",
     itemPrice: 280,
@@ -158,8 +141,8 @@ const FOOD_ITEMS = [
     itemCartCount: 0,
     itemCategoryId: "VEG_CURRIES",
     itemCategoryName: "Veg Curries",
-  }),
-  new FoodItem({
+  },
+  {
     itemId: "MUSHROOM_MASALA",
     itemName: "Mushroom Masala",
     itemPrice: 275,
@@ -171,8 +154,8 @@ const FOOD_ITEMS = [
     itemCartCount: 0,
     itemCategoryId: "VEG_CURRIES",
     itemCategoryName: "Veg Curries",
-  }),
-  new FoodItem({
+  },
+  {
     itemId: "AAM_PANNA_SORBET",
     itemName: "Aam Panna Sorbet",
     itemPrice: 69,
@@ -184,7 +167,7 @@ const FOOD_ITEMS = [
     itemCartCount: 0,
     itemCategoryId: "BREVERAGES",
     itemCategoryName: "Breverages",
-  }),
+  },
 ];
 
 export default FOOD_ITEMS;

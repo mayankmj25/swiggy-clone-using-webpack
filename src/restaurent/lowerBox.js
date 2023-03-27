@@ -1,4 +1,4 @@
-export function restaurantLowerBox() {
+export function createRestaurantLowerBox() {
   const restaurantLowerBox = document.createElement("div");
   restaurantLowerBox.className = "lower-box";
 

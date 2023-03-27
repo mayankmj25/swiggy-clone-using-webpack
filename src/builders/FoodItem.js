@@ -10,15 +10,15 @@ class FoodItem {
     itemCategoryId,
     itemCategoryName,
   }) {
-    this.itemId = itemId;
-    this.itemName = itemName;
-    this.itemPrice = itemPrice;
-    this.itemImage = itemImage;
-    this.itemInfo = itemInfo;
-    this.isVeg = isVeg;
-    this.itemCartCount = itemCartCount;
-    this.itemCategoryId = itemCategoryId;
-    this.itemCategoryName = itemCategoryName;
+    this.setId(itemId);
+    this.setName(itemName);
+    this.setPrice(itemPrice);
+    this.setImageUrl(itemImage);
+    this.setInfo(itemInfo);
+    this.setIsVeg(isVeg);
+    this.setCount(itemCartCount);
+    this.setCategoryId(itemCategoryId);
+    this.setCategoryName(itemCategoryName);
   }
   getId = () => {
     return this.itemId;
@@ -29,17 +29,17 @@ class FoodItem {
   getPrice = () => {
     return this.itemPrice;
   };
+  getImageUrl = () => {
+    return this.itemImage;
+  };
+  getInfo = () => {
+    return this.itemInfo;
+  };
   getIsVeg = () => {
     return this.isVeg;
   };
   getCount = () => {
     return this.itemCartCount;
-  };
-  getInfo = () => {
-    return this.itemInfo;
-  };
-  getImageUrl = () => {
-    return this.itemImage;
   };
   getCategoryName = () => {
     return this.itemCategoryName;
@@ -47,14 +47,41 @@ class FoodItem {
   getCategoryId = () => {
     return this.itemCategoryId;
   };
+  setId = (id) => {
+    this.itemId = id;
+    return this.itemId;
+  };
+  setName = (name) => {
+    this.itemName = name;
+    return this.itemName;
+  };
+  setPrice = (price) => {
+    this.itemPrice = price;
+    return this.itemPrice;
+  };
+  setImageUrl = (imageUrl) => {
+    this.itemImage = imageUrl;
+    return this.itemImage;
+  };
+  setInfo = (info) => {
+    this.itemInfo = info;
+    return this.itemInfo;
+  };
+  setIsVeg = (isVeg) => {
+    this.isVeg = isVeg;
+    return this.isVeg;
+  };
   setCount = (count) => {
     this.itemCartCount = count;
+    return this.itemCartCount;
   };
-  increaseCount = () => {
-    this.itemCartCount += 1;
+  setCategoryName = (categoryName) => {
+    this.itemCategoryName = categoryName;
+    return this.itemCategoryName;
   };
-  decreaseCount = () => {
-    this.itemCartCount -= 1;
+  setCategoryId = (categoryId) => {
+    this.itemCategoryId = categoryId;
+    return this.itemCategoryId;
   };
 }
 

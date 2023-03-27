@@ -1,4 +1,4 @@
-export function restaurantUpperBox() {
+export function createRestaurantUpperBox() {
   const restaurantUpperBox = document.createElement("div");
   restaurantUpperBox.className = "upper-box";
 
