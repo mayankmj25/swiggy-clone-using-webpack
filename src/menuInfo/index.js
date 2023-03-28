@@ -1,4 +1,4 @@
-import { createFoodItems } from "./foodItemsRender/index.js";
+import { createFoodItems } from "./foodItems/index.js";
 import { createCategoryList } from "./category/index.js";
 import { createMenuCartSection } from "./cart/index.js";
 

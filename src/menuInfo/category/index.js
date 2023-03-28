@@ -8,7 +8,7 @@ export function createCategoryList(controller) {
 
   const categoryKeyArray = Object.keys(getCategoryByCategoryId);
 
-  categoryKeyArray.map((key) => {
+  categoryKeyArray.forEach((key) => {
     const listElement = document.createElement("li");
     const linkElement = document.createElement("a");
     linkElement.setAttribute("href", `#${getCategoryByCategoryId[key]}`);
