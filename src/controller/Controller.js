@@ -4,8 +4,8 @@ import FoodItem from "../builders/FoodItem.js";
 
 export class Controller {
   constructor() {
-    this.FOOD_ITEMS = FOOD_ITEMS.map((foodItem) => new FoodItem(foodItem));
-    this.mapIdToFoodItem = this.getFoodItemById();
+    this.foodItems = FOOD_ITEMS.map((foodItem) => new FoodItem(foodItem));
+    this.mapIdToFoodItem = this.getFoodItemById(FOOD_ITEMS);
     this.eventEmitter = new EventEmitter();
   }
   addCountToData(id) {
@@ -26,16 +26,19 @@ export class Controller {
 
   getCategoryByCategoryId = () => {
     const mapCategoryIdToCategory = {};
-    this.FOOD_ITEMS.map((item) => {
+    this.foodItems.forEach((item) => {
       mapCategoryIdToCategory[item.getCategoryId()] = item.getCategoryName();
     });
     return mapCategoryIdToCategory;
   };
 
-  getFoodItemById = () => {
+  getFoodItemById = (FOOD_ITEMS) => {
     const mapIdToFoodItem = {};
-    this.FOOD_ITEMS.map((item) => {
-      mapIdToFoodItem[item.getId()] = item;
+    FOOD_ITEMS.forEach((item) => {
+      const foodItem = new FoodItem(item);
+      if (mapIdToFoodItem[foodItem.getId()])
+        mapIdToFoodItem[foodItem.getId()].push(foodItem);
+      else mapIdToFoodItem[foodItem.getId()] = foodItem;
     });
     return mapIdToFoodItem;
   };

@@ -6,33 +6,47 @@
 
 export const createFoodItems = (controller) => {
   controller.onUpdate(updateCount);
-  const getCategoryByCategoryId = controller.getCategoryByCategoryId();
-  const FOOD_ITEMS = controller.FOOD_ITEMS;
+  // const getCategoryByCategoryId = controller.getCategoryByCategoryId();
+  const foodItemsById = controller.mapIdToFoodItem;
+  const foodItems = Object.values(foodItemsById);
+
   const foodItemsContainer = document.createElement("div");
   foodItemsContainer.className = "food-items";
-  const categoryKeyArray = Object.keys(getCategoryByCategoryId);
-  categoryKeyArray.map((key) => {
-    const foodList = FOOD_ITEMS.filter((e) => {
-      return e.getCategoryId() == key;
-    });
-    foodItemsContainer.appendChild(addSection(key, foodList, controller));
+
+  // create an object that has an array of item, grouped according to categoryId
+  // loop on that object and print the data
+
+  // const categoryKeyArray = Object.keys(getCategoryByCategoryId);
+
+  const foodItemsByCategoryId = getFoodItemsByCategoryId(foodItems);
+  for (let categoryId in foodItemsByCategoryId) {
+    const foodList = foodItemsByCategoryId[categoryId];
+    foodItemsContainer.appendChild(addSection(foodList, controller));
     renderItems(foodList, foodItemsContainer, controller);
-  });
+  }
+
+  // categoryKeyArray.map((key) => {
+  //   const foodList = foodItems.filter((e) => {
+  //     return e.getCategoryId() == key;
+  //   });
+  //   foodItemsContainer.appendChild(addSection(foodList, controller));
+  //   renderItems(foodList, foodItemsContainer, controller);
+  // });
+
   return foodItemsContainer;
 };
 
-const addSection = function (key, foodList, controller) {
-  const getCategoryByCategoryId = controller.getCategoryByCategoryId();
-
+const addSection = function (foodList) {
   let sectionHeader = document.createElement("h1");
-  sectionHeader.textContent = getCategoryByCategoryId[key];
+  const categoryName = foodList[0].getCategoryName();
+  sectionHeader.textContent = categoryName;
 
   let sectionPara = document.createElement("p");
   sectionPara.textContent = `${foodList.length} Items`;
 
   let section = document.createElement("div");
   section.setAttribute("id", "section");
-  section.setAttribute("id", `${getCategoryByCategoryId[key]}`);
+  section.setAttribute("id", categoryName);
   section.appendChild(sectionHeader);
   section.appendChild(sectionPara);
 
@@ -40,8 +54,8 @@ const addSection = function (key, foodList, controller) {
 };
 
 const renderItems = (foodList, foodItemsContainer, controller) => {
-  foodList.forEach((value, i) => {
-    addFoodItem(foodList[i], foodItemsContainer, controller);
+  foodList.forEach((value) => {
+    addFoodItem(value, foodItemsContainer, controller);
   });
 };
 
@@ -62,18 +76,18 @@ const addFoodItem = (foodItem, foodItemsContainer, controller) => {
   leftPara2.textContent = foodItem.getInfo();
 
   let rightImg = document.createElement("img");
-  rightImg.setAttribute("src", `${foodItem.getImageUrl()}`);
+  rightImg.setAttribute("src", foodItem.getImageUrl());
 
   let buttonDiv = document.createElement("div");
   let plusButton = document.createElement("button");
-  plusButton.setAttribute("id", `${foodItem.getId()}`);
+  plusButton.setAttribute("id", foodItem.getId());
   plusButton.textContent = "add";
   let counter = document.createElement("span");
   counter.setAttribute("class", "counter");
   counter.setAttribute("id", `counter${foodItem.getId()}`);
   counter.textContent = 0;
   let minuButton = document.createElement("button");
-  minuButton.setAttribute("id", `${foodItem.getId()}`);
+  minuButton.setAttribute("id", foodItem.getId());
   minuButton.textContent = "remove";
   buttonDiv.appendChild(plusButton);
   buttonDiv.appendChild(counter);
@@ -121,4 +135,16 @@ function updateCount(item) {
   let id = item.getId();
   let count = item.getCount();
   document.getElementById(`counter${id}`).textContent = count;
+}
+
+function getFoodItemsByCategoryId(foodItems) {
+  const foodItemsByCategoryId = {};
+  foodItems.forEach((item) => {
+    if (foodItemsByCategoryId[item.getCategoryId()]) {
+      foodItemsByCategoryId[item.getCategoryId()].push(item);
+    } else {
+      foodItemsByCategoryId[item.getCategoryId()] = [item];
+    }
+  });
+  return foodItemsByCategoryId;
 }
